@@ -375,14 +375,13 @@ class DiscordWebSocket:
                 'token': self.token,
                 'properties': {
                     '$os': sys.platform,
-                    '$browser': 'discord.py',
-                    '$device': 'discord.py',
+                    '$browser': 'discord.js',
+                    '$device': 'discord.js',
                     '$referrer': '',
                     '$referring_domain': ''
                 },
                 'compress': True,
-                'large_threshold': 250,
-                'v': 3
+                'large_threshold': 250
             }
         }
 
@@ -398,8 +397,8 @@ class DiscordWebSocket:
                 'afk': False
             }
 
-        if state._intents is not None:
-            payload['d']['intents'] = state._intents.value
+        #if state._intents is not None:
+        #    payload['d']['intents'] = state._intents.value
 
         await self.call_hooks('before_identify', self.shard_id, initial=self._initial_identify)
         await self.send_as_json(payload)
